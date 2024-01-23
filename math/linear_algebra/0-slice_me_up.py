@@ -6,7 +6,3 @@ arr3 =  arr[1:6]
 print("The first two numbers of the array are: {}".format(arr1))
 print("The last five numbers of the array are: {}".format(arr2))
 print("The 2nd through 6th numbers of the array are: {}".format(arr3))
-# python3 emri.py - ekzekuton kodin
-#chmod u+x - userit i jep te drejten e ...?
-#./emri.py - ekzekuton si script
-#testimi automatik i kodit ne git
