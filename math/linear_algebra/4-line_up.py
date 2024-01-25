@@ -14,5 +14,5 @@ A function that returns the transpose of a 2D matrix
     transpose = [[0] * rows for _ in range(cols)]
     for i in range(rows):
         for j in range(cols):
-            transpose[j][i] = matrix[i][j]
+            transpose [j][i] = matrix [i][j]
     return transpose
