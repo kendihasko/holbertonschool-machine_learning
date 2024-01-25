@@ -16,3 +16,4 @@ A function that adds two arrays element-wise
         result.append(arr1[i] + arr2[i])
 
     return result
+    
