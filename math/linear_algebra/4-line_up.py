@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 """
-A function that returns the transpose of a 2D matrix
+A function that adds two arrays element-wise
 """
 
 
-def matrix_transpose(matrix):
+def add_arrays(arr1, arr2):
     """
-A function that returns the transpose of a 2D matrix
+A function that adds two arrays element-wise
     """
-    rows = len(matrix)
-    cols = len(matrix[0])
+    if len(arr1) != len(arr2):
+        return None
 
-    transpose = [[0] * rows for _ in range(cols)]
-    for i in range(rows):
-        for j in range(cols):
-            transpose [j][i] = matrix [i][j]
-    return transpose
+    result = []
+    for i in range(len(arr1)):
+        result.append(arr1[i] + arr2[i])
+
+    return result
