@@ -25,3 +25,15 @@ for row in matrix: #zakonisht keshtu iterojme ne matrixes
 
 
     #duhet ti zvogelojme dimensionin?
+
+    #me tab ploteson ne Linux
+
+
+  #  i , kur nuk ke nje variabel e shkruan _
+
+
+#Task 3
+    #create empty matrix with same correct dims 
+    #iterate over rows
+    #iterate over cols
+    #transpose [j][i] = matrix [i][j]
