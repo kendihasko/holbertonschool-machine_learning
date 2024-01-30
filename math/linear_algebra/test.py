@@ -43,3 +43,6 @@ for row in matrix: #zakonisht keshtu iterojme ne matrixes
 
 my_list = [1, 2, 3, 4]
 my_tuple = (1,2)
+
+#axis = 0 dmth sipas rreshtavee, axis =1 dmth sipas kolonave. kur nuk jep nje axis dmth = 0, kerko dimensonet pse duhen same shape
+
