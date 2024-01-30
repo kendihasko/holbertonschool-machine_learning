@@ -39,3 +39,7 @@ for row in matrix: #zakonisht keshtu iterojme ne matrixes
     #transpose [j][i] = matrix [i][j]
 
     mat1 =  matrix[1:3, :] #fillimisht rreshtat, pastaj kolonat
+
+
+my_list = [1, 2, 3, 4]
+my_tuple = (1,2)
