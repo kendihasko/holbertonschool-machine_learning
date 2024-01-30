@@ -37,3 +37,5 @@ for row in matrix: #zakonisht keshtu iterojme ne matrixes
     #iterate over rows
     #iterate over cols
     #transpose [j][i] = matrix [i][j]
+
+    mat1 =  matrix[1:3, :] #fillimisht rreshtat, pastaj kolonat
