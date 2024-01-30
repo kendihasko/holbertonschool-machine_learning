@@ -46,3 +46,17 @@ my_tuple = (1,2)
 
 #axis = 0 dmth sipas rreshtavee, axis =1 dmth sipas kolonave. kur nuk jep nje axis dmth = 0, kerko dimensonet pse duhen same shape
 
+ne python rastet if etj etj te gabimit behen ne fillim qe kodi te mos vazhdoje
+
+
+
+def def cat_matrices2D(mat1, mat2, axis=0): t
+    """
+A function that concatenates two matrices along a specific axis
+    """
+
+    if axis == 0:
+        if len(mat1[0] != len(mat2[0])):
+            return None
+
+            
