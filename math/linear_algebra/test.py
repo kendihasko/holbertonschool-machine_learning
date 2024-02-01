@@ -60,3 +60,5 @@ A function that concatenates two matrices along a specific axis
             return None
 
             
+
+    for i in range(mat1_rows): #ecim te rreshtat me i
