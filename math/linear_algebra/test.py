@@ -62,3 +62,6 @@ A function that concatenates two matrices along a specific axis
             
 
     for i in range(mat1_rows): #ecim te rreshtat me i
+
+
+            dot_product = sum(mat1[i][k] * mat2[k][j] for k in range (mat1_columns)) #ate qe kane te perbashket
