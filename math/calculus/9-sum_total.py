@@ -5,9 +5,9 @@ A script that calculates the sum of squares
 
 
 def summation_i_squared(n):
-'''
-A function that calculates the sum of squares
-'''
-
+    '''
+    A function that calculates the sum of squares
+    '''
+    
     sum = (n*(n+1)*(2*n+1))/6
     return sum
