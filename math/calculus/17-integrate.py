@@ -11,14 +11,14 @@ def poly_integral(poly, C=0):
     if not isinstance(poly, list) or not all(isinstance(coeff, (int, float)) for coeff in poly) or not isinstance(C, int):
             return None
 
-        while poly and poly[-1] == 0:
-            poly.pop()
+    while poly and poly[-1] == 0:
+        poly.pop()
 
-        if not poly:
-            return [C]
+    if not poly:
+        return [C]
 
-        integral_coeffs = [poly[i] / (i + 1) for i in range(len(poly))]
+    integral_coeffs = [poly[i] / (i + 1) for i in range(len(poly))]
 
-        integral_coeffs.insert(0, C)
+    integral_coeffs.insert(0, C)
 
-        return integral_coeffs
+    return integral_coeffs
