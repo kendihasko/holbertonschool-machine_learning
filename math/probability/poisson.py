@@ -21,22 +21,24 @@ A class that represemts a poisson distribution.
 
     def pmf(self, k):
         '''
-        A method that calculates the value of the PMF for a given number of “successes”
+        A method that calculates the value of the PMF 
+        for a given number of “successes”
         '''
         if type(k) is not int:
             k = int(k)
         if k < 0:
             return 0
-        e = 2.7182818285    
+        e = 2.7182818285
         factorial = 1
         for i in range(k):
             factorial *= (k + 1)
-            pmf = ((e** - lambtha) * (lambtha ** k))/ factorial
+            pmf = ((e ** - lambtha) * (lambtha ** k)) / factorial
             return pmf
 
     def cdf(self, k):
         '''
-        A method that calculates the value of the CDF for a given number of “successes”
+        A method that calculates the value of the CDF 
+        for a given number of “successes”
         '''
         if type(k) is not int:
             k = int(k)
