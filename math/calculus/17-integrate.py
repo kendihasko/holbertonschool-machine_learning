@@ -10,7 +10,7 @@ def poly_integral(poly, C=0):
     """
     if not isinstance(poly, list) or \
             not all(isinstance(coeff, (int, float)) for coeff in poly) or \
-            not isinstance(C, int):
+            C is not None and not isinstance(C, int):
         return None
 
     while poly and poly[-1] == 0:
