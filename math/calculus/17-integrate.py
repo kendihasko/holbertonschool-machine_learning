@@ -10,7 +10,7 @@ def poly_integral(poly, C=0):
     """
     if not isinstance(poly, list) or \
             not all(isinstance(coeff, (int, float)) for coeff in poly) or \
-            C is not None and not isinstance(C, int):
+            (C is not None and not isinstance(C, int)):
         return None
 
     if not poly:
@@ -20,7 +20,7 @@ def poly_integral(poly, C=0):
         poly.pop()
 
     if not poly:
-        return [C]
+        return [C] if C is not None else None
 
     integral_coeffs = [0] * (len(poly) + 1)
     integral_coeffs[0] = C
