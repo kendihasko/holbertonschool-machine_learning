@@ -21,7 +21,7 @@ A class that represemts a poisson distribution.
 
     def pmf(self, k):
         '''
-        A method that calculates the value of the PMF 
+        A method that calculates the value of the PMF
         for a given number of “successes”
         '''
         if type(k) is not int:
@@ -37,7 +37,7 @@ A class that represemts a poisson distribution.
 
     def cdf(self, k):
         '''
-        A method that calculates the value of the CDF 
+        A method that calculates the value of the CDF
         for a given number of “successes”
         '''
         if type(k) is not int:
