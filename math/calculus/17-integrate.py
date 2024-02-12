@@ -8,12 +8,12 @@ def poly_integral(poly, C=0):
     """
     A function that calculates the integral of a polynomial
     """
-    if poly == []:
-        return None
-
     if not isinstance(poly, list) or \
             not all(isinstance(coeff, (int, float)) for coeff in poly) or \
             C is not None and not isinstance(C, int):
+        return None
+
+    if not poly:
         return None
 
     while poly and poly[-1] == 0:
