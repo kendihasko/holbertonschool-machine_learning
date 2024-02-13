@@ -9,11 +9,11 @@ class Normal:
 A class that represents a normal distribution
     '''
     def __init__(self, data=None, mean=0., stddev=1.):
+
         self.mean = float(mean)
         self.stddev = float(stddev)
 
         if data is None:
-            data = [self.mean, self.stddev]
             if self.stddev <= 0:
                 raise ValueError("stddev must be a positive value")
 
@@ -24,8 +24,10 @@ A class that represents a normal distribution
                 raise ValueError("data must contain multiple values")
 
             self.mean = (float(sum(data)) / len(data))
-            variance = sum((x - self.mean) ** 2 for x in data) / len(data)
-            self.stddev = variance ** 0.5
+            summation = 0
+            for x in data:
+                summation += (x - mean) ** 2
+            self.stddev = (summation / len(data)) ** (0.5)
 
     def z_score(self, x):
         '''
@@ -40,3 +42,16 @@ A class that represents a normal distribution
         '''
         self.x = (self.stddev * z) + self.mean
         return self.x
+
+    def pdf(self, x):
+        '''
+        Why calculate pdf if numpy already does it for us???
+        '''
+        e = 2.7182818285
+        pi = 3.1415926536
+        mean = self.mean
+        stddev = self.stddev
+
+        coefficient = 1 / (stddev * ((2 * pi) ** (0.5)))
+        power = -0.5 * (self.z_score(x) ** 2)
+        return coefficient * (e ** power)
