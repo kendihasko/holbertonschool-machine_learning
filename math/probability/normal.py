@@ -14,8 +14,8 @@ A class that represents a normal distribution
 
         if data is None:
             data = [self.mean, self.stddev]
-        if self.stddev <= 0:
-            raise ValueError("stddev must be a positive value")
+            if self.stddev <= 0:
+                raise ValueError("stddev must be a positive value")
 
         else:
             if type(data) is not list:
@@ -24,8 +24,5 @@ A class that represents a normal distribution
                 raise ValueError("data must contain multiple values")
 
             self.mean = (float(sum(data)) / len(data))
-
-            sum_squared_diff = sum((x - self.mean) ** 2 for x in data)
-            variance = sum_squared_diff / len(data)
+            variance = sum((x - self.mean) ** 2 for x in data) / len(data)
             self.stddev = variance ** 0.5
-
