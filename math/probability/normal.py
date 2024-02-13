@@ -26,3 +26,17 @@ A class that represents a normal distribution
             self.mean = (float(sum(data)) / len(data))
             variance = sum((x - self.mean) ** 2 for x in data) / len(data)
             self.stddev = variance ** 0.5
+
+    def z_score(self, x):
+        '''
+        A method that calculates the z-score of a given x-value
+        '''
+        self.z = (x - self.mean) / self.stddev
+        return self.z
+
+    def x_value(self, z):
+        '''
+        A method that calculates the z-score of a given x-value
+        '''
+        self.x = (self.stddev * z) + self.mean
+        return self.x
