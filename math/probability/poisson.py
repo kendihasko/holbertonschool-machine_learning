@@ -24,8 +24,7 @@ A class that represemts a poisson distribution.
         A method that calculates the value of the PMF
         for a given number of “successes”
         '''
-        if not isinstance(k, int):
-            k = int(k)
+        k = int(k)
         if k < 0:
             return 0
         e = 2.7182818285
