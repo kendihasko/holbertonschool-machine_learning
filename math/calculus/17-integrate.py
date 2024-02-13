@@ -8,6 +8,9 @@ def poly_integral(poly, C=0):
     """
     A function that calculates the integral of a polynomial
     """
+    if C is None:
+        return None
+
     if not isinstance(poly, list) or \
        any(not isinstance(coeff, (int, float)) for coeff in poly):
         return None
