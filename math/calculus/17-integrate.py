@@ -9,18 +9,17 @@ def poly_integral(poly, C=0):
     A function that calculates the integral of a polynomial
     """
     if not isinstance(poly, list) or \
-            not all(isinstance(coeff, (int, float)) for coeff in poly) or \
-            (C is not None and not isinstance(C, int)):
+       any(not isinstance(coeff, (int, float)) for coeff in poly):
         return None
 
-    if not poly:
+    if C is not None and not isinstance(C, int):
         return None
-
-    while poly and poly[-1] == 0:
-        poly.pop()
 
     if not poly:
         return [C] if C is not None else None
+
+    while poly and poly[-1] == 0:
+        poly.pop()
 
     integral_coeffs = [0] * (len(poly) + 1)
     integral_coeffs[0] = C
