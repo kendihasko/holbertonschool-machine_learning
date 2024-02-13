@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-A class that represents an exponential distribution
+A script that represents an exponential distribution
 '''
 
 
@@ -23,6 +23,9 @@ A class that represents an exponential distribution
             self.lambtha = 1 / (float(sum(data)) / len(data))
 
     def pdf(self, x):
+        '''
+        A method that calculates the value of the PDF for a given time period
+        '''
         if x < 0:
             return 0
         e = 2.7182818285
