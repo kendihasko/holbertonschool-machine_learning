@@ -34,7 +34,7 @@ A class that represemts a poisson distribution.
             factorial *= i
 
         e = 2.7182818285
-        pmf = ((e ** - self.lambtha) * (self.lambtha ** k)) / factorial
+        pmf = ((e ** -self.lambtha) * (self.lambtha ** k)) / factorial
         return pmf
 
     def cdf(self, k):
@@ -42,11 +42,11 @@ A class that represemts a poisson distribution.
         A method that calculates the value of the CDF
         for a given number of “successes”
         '''
-        if type(k) is not int:
-            k = int(k)
+
+        k = int(k)
         if k < 0:
             return 0
-            cdf = 0
-            for i in range(k+1):
-                cdf += self.pmf(i)
-            return cdf
+        cdf = 0
+        for i in range(k+1):
+            cdf += self.pmf(i)
+        return cdf
