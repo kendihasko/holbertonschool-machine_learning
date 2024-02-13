@@ -6,7 +6,7 @@ A script that represents a normal distribution
 
 class Normal:
     '''
-A class that represents a normal distribution
+    A class that represents a normal distribution
     '''
     def __init__(self, data=None, mean=0., stddev=1.):
 
@@ -56,3 +56,17 @@ A class that represents a normal distribution
         power = -0.5 * ((self.z_score(x)) ** 2)
         pdf = coefficient * (e ** power)
         return pdf
+
+    def cdf(self, x):
+        '''
+        Why calculate pdf if numpy already does it for us???
+        '''
+        mean = self.mean
+        stddev = self.stddev
+        pi = 3.1415926536
+        value = (x - mean) / (stddev * (2 ** (1 / 2)))
+        erf = value - ((value ** 3) / 3) + ((value ** 5) / 10)
+        erf = erf - ((value ** 7) / 42) + ((value ** 9) / 216)
+        erf *= (2 / (pi ** (1 / 2)))
+        cdf = (1 / 2) * (1 + erf)
+        return cdf
