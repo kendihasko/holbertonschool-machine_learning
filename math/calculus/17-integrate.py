@@ -16,10 +16,13 @@ def poly_integral(poly, C=0):
         return None
 
     if not poly:
-        return [C] if C is not None else None
+        return None
 
     while poly and poly[-1] == 0:
         poly.pop()
+
+    if not poly:
+        return [C]
 
     integral_coeffs = [0] * (len(poly) + 1)
     integral_coeffs[0] = C
