@@ -21,3 +21,9 @@ A class that represents an exponential distribution
             if len(data) < 2:
                 raise ValueError("data must contain multiple values")
             self.lambtha = 1 / (float(sum(data)) / len(data))
+
+    def pdf(self, x):
+        if x < 0:
+            return 0
+        e = 2.7182818285
+        return self.lambtha * (e ** (-self.lambtha * x))
