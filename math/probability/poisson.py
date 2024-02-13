@@ -29,8 +29,8 @@ A class that represemts a poisson distribution.
             return 0
         e = 2.7182818285
         factorial = 1
-        for i in range(k):
-            factorial *= (i + 1)
+        for i in range(1, k + 1):
+            factorial *= i
             pmf = ((e ** - self.lambtha) * (self.lambtha ** k)) / factorial
             return pmf
 
