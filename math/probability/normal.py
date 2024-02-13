@@ -52,6 +52,7 @@ A class that represents a normal distribution
         mean = self.mean
         stddev = self.stddev
 
-        coefficient = 1 / (stddev * ((2 * pi) ** (0.5)))
-        power = -0.5 * (self.z_score(x) ** 2)
-        return coefficient * (e ** power)
+        coefficient = 1 / (stddev * ((2 * pi) ** (1 / 2)))
+        power = -0.5 * ((self.z_score(x)) ** 2)
+        pdf = coefficient * (e ** power)
+        return pdf
