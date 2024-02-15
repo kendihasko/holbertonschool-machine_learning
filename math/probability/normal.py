@@ -9,13 +9,15 @@ class Normal:
     A class that represents a normal distribution
     '''
     def __init__(self, data=None, mean=0., stddev=1.):
-
-        self.mean = float(mean)
-        self.stddev = float(stddev)
-
+        '''
+        A method that represents a normal distribution
+        '''
         if data is None:
-            if self.stddev <= 0:
+            if self.stddev < 1:
                 raise ValueError("stddev must be a positive value")
+            else:            
+                self.stddev = float(stddev)
+                self.mean = float(mean)
 
         else:
             if type(data) is not list:
