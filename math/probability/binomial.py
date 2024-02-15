@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-''' 
+'''
 A script that defines Binomial distribution
 '''
 
@@ -42,7 +42,7 @@ class Binomial:
 
     def pmf(self, k):
         '''
-        A method that calculates the value of the PMF for a given number of successes
+        Calculates the value of the PMF for a given number of successes
         '''
         if type(k) is not int:
             k = int(k)
@@ -66,7 +66,7 @@ class Binomial:
 
     def cdf(self, k):
         '''
-        A method that calculates the value of the CDF for a given number of successes
+        Calculates the value of the CDF for a given number of successes
         '''
         if type(k) is not int:
             k = int(k)
@@ -76,4 +76,3 @@ class Binomial:
         for i in range(k + 1):
             cdf += self.pmf(i)
         return cdf
-        
