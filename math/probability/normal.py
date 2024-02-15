@@ -22,14 +22,14 @@ class Normal:
         else:
             if type(data) is not list:
                 raise TypeError("data must be a list")
-            if len(data) < 2:
+            elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
-
-            self.mean = (float(sum(data)) / len(data))
-            summation = 0
-            for x in data:
-                summation += ((x - mean) ** 2)
-            self.stddev = (summation / len(data)) ** (0.5)
+            else:
+                self.mean = (float(sum(data)) / len(data))
+                summation = 0
+                for x in data:
+                    summation += ((x - mean) ** 2)
+                self.stddev = (summation / len(data)) ** (0.5)
 
     def z_score(self, x):
         '''
