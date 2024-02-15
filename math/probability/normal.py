@@ -33,27 +33,30 @@ class Normal:
         '''
         A method that calculates the z-score of a given x-value
         '''
-        self.z = (x - self.mean) / self.stddev
-        return self.z
+        mean = self.mean
+        stddev = self.stddev
+        z = (x - mean) / stddev
+        return z
 
     def x_value(self, z):
         '''
         A method that calculates the z-score of a given x-value
         '''
-        self.x = (self.stddev * z) + self.mean
-        return self.x
-
+        mean = self.mean
+        stddev = self.stddev
+        x = (z * stddev) + mean
+        return x
+    
     def pdf(self, x):
         '''
         Why calculate pdf if numpy already does it for us???
         '''
-        e = 2.7182818285
-        pi = 3.1415926536
         mean = self.mean
         stddev = self.stddev
-
+        e = 2.7182818285
+        pi = 3.1415926536
+        power = -0.5 * (self.z_score(x) ** 2)
         coefficient = 1 / (stddev * ((2 * pi) ** (1 / 2)))
-        power = -0.5 * ((self.z_score(x)) ** 2)
         pdf = coefficient * (e ** power)
         return pdf
 
