@@ -26,7 +26,7 @@ class Normal:
             self.mean = (float(sum(data)) / len(data))
             summation = 0
             for x in data:
-                summation += (x - mean) ** 2
+                summation += ((x - mean) ** 2)
             self.stddev = (summation / len(data)) ** (0.5)
 
     def z_score(self, x):
@@ -46,7 +46,7 @@ class Normal:
         stddev = self.stddev
         x = (z * stddev) + mean
         return x
-    
+
     def pdf(self, x):
         '''
         Why calculate pdf if numpy already does it for us???
