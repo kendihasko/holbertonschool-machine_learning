@@ -35,5 +35,5 @@ def marginal(x, n, P, Pr):
     intersection = likelihood * Pr
 
     marginal = np.sum(intersection)
-    
+
     return marginal
