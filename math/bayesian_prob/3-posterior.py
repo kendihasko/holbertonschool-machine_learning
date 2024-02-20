@@ -36,7 +36,6 @@ def posterior(x, n, P, Pr):
     likelihood = fact_coefficient * (P ** x) * (1 - P) ** (n - x)
     intersection = likelihood * Pr
     marginal = np.sum(intersection)
-
     posterior = intersection / marginal
 
     return posterior
