@@ -14,11 +14,11 @@ def likelihood(x, n, P):
     '''
     if type(n) is not int or n <= 0:
         raise ValueError("n must be a positive integer")
-    if type(p) is not into or x < 0:
+    if type(x) is not int or x < 0:
         raise ValueError("x must be an integer that is greater than or equal to 0")
     if x > n:
         raise ValueError("x cannot be greater than n")
-    if type(P) is not np.ndarray or len(p.shape) != 1:
+    if type(P) is not np.ndarray or len(P.shape) != 1:
         raise TypeError("P must be a 1D numpy.ndarray")
     for value in P:
         if value > 1 or value < 0:
