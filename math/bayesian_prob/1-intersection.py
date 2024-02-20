@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-A script that calculates the intersection of obtaining this data 
+A script that calculates the intersection of obtaining this data
 with the various hypothetical probabilities
 '''
 
@@ -9,7 +9,7 @@ import numpy as np
 
 def intersection(x, n, P, Pr):
     '''
-    A function that calculates the intersection of obtaining this data 
+    A function that calculates the intersection of obtaining this data
     with the various hypothetical probabilities
     '''
     if type(n) is not int or n <= 0:
