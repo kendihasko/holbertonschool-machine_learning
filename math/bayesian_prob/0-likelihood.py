@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-A script that calculates the likelihood of obtaining this data given 
+A script that calculates the likelihood of obtaining this data given
 various hypothetical probabilities of developing severe side effects
 '''
 
@@ -9,7 +9,7 @@ import numpy as np
 
 def likelihood(x, n, P):
     '''
-    A function that calculates the likelihood of obtaining this data given 
+    A function that calculates the likelihood of obtaining this data given
     various hypothetical probabilities of developing severe side effects
     '''
     if type(n) is not int or n <= 0:
