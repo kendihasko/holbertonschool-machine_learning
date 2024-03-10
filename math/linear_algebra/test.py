@@ -49,18 +49,15 @@ my_tuple = (1,2)
 
 
 
-def def cat_matrices2D(mat1, mat2, axis=0): t
+def cat_matrices2D(mat1, mat2, axis=0):
     """
-A function that concatenates two matrices along a specific axis
+    A function that concatenates two matrices along a specific axis
     """
 
     if axis == 0:
         if len(mat1[0] != len(mat2[0])):
             return None
 
-            
-
     for i in range(mat1_rows): #ecim te rreshtat me i
-
 
             dot_product = sum(mat1[i][k] * mat2[k][j] for k in range (mat1_columns)) #ate qe kane te perbashket
