@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""
+'''
 Update the script to visualize the DataFrame
-"""
+'''
 
 from datetime import date
 import matplotlib.pyplot as plt
