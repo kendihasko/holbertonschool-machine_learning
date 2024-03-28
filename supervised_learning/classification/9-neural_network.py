@@ -7,7 +7,7 @@ Neuron class that defines a neural network with one hidden layer performing bina
 import numpy as np
 
 
-class Neuron:
+class NeuralNetwork:
     '''
     A single neuron performing binary classification
     '''
