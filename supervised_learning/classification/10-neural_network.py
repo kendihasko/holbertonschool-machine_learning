@@ -83,10 +83,10 @@ class NeuralNetwork:
         Calculates the forward propagation of the neuron,
         neuron should use a sigmoid activation function
         '''
-        z = np.matmul(self.W1, X) + self.b1
+        z1 = np.matmul(self.W1, X) + self.b1
         self.__A1 = 1 / (1 + np.exp(-z1))
 
-        z = np.matmul(self.W2, X) + self.b2
+        z2 = np.matmul(self.W2, A1) + self.b2
         self.__A2 = 1 / (1 + np.exp(-z2))
 
         return (self.__A1, self.__A2)
