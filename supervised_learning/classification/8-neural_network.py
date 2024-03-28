@@ -9,7 +9,7 @@ import numpy as np
 
 class NeuralNetwork:
     '''
-    A single neuron performing binary classification
+    A neural network performing binary classification
     '''
 
 
