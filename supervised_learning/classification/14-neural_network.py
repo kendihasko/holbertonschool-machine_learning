@@ -76,7 +76,6 @@ class NeuralNetwork:
         '''
         return self.__A2
 
-
     def forward_prop(self, X):
         '''
         Calculates the forward propagation of the neuron,
@@ -98,7 +97,7 @@ class NeuralNetwork:
         m_loss = np.sum((Y * np.log(A)) + (1 - Y) * np.log(1.0000001 - A))
         cost = (1/m) * (-(m_loss))
         return cost
-        
+
     def evaluate(self, X, Y):
         '''
         Evaluates a neuron's prediction
@@ -108,9 +107,9 @@ class NeuralNetwork:
         prediction = np.where(A2 >= 0.5, 1, 0)
         return (prediction, cost)
 
-    def gradient_descent(self, X, Y, A, alpha=0.05):
+    def gradient_descent(self, X, Y, A1, A2, alpha=0.05):
         '''
-        Calculates one pass of gradient descent on the neural network
+        Gradient descent algorithm for neural network
         '''
         m = Y.shape[1]
 
@@ -126,7 +125,6 @@ class NeuralNetwork:
         self.__b2 = self.b2 - (alpha * d__b2)
         self.__W1 = self.W1 - (alpha * d__W1)
         self.__b1 = self.b1 - (alpha * d__b1)
-
 
     def train(self, X, Y, iterations=5000, alpha=0.05):
         '''
