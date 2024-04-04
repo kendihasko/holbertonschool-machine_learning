@@ -76,7 +76,6 @@ class NeuralNetwork:
         '''
         return self.__A2
 
-
     def forward_prop(self, X):
         '''
         Calculates the forward propagation of the neuron,
@@ -89,4 +88,3 @@ class NeuralNetwork:
         self.__A2 = 1 / (1 + np.exp(-z2))
 
         return (self.__A1, self.__A2)
-        
