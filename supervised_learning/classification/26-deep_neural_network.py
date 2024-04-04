@@ -97,9 +97,9 @@ class DeepNeuralNetwork:
         return (prediction, cost)
 
     def gradient_descent(self, Y, cache, alpha=0.05):
-        """
-        calculates one pass of gradient descent on the neural network
-        """
+        '''
+        Calculates one pass of gradient descent on the neural network
+        '''
 
         m = Y.shape[1]
         back = {}
@@ -173,9 +173,9 @@ class DeepNeuralNetwork:
         return self.evaluate(X, Y)
 
     def save(self, filename):
-        """
-        saves the instance object to a file in pickle format
-        """
+        '''
+        Saves the instance object to a file in pickle format
+        '''
         import pickle
         if not isinstance(filename, str):
             print("Error: filename must be a string.")
@@ -189,9 +189,9 @@ class DeepNeuralNetwork:
 
     @staticmethod
     def load(filename):
-        """
-        loads a pickled DeepNeuralNetwork object from a file
-        """
+        '''
+        Loads a pickled DeepNeuralNetwork object from a file
+        '''
         import pickle
         try:
             with open(filename, 'rb') as f:
