@@ -12,7 +12,6 @@ class Neuron:
     A single neuron performing binary classification
     '''
 
-
     def __init__(self, nx):
         '''
         Class constructor
