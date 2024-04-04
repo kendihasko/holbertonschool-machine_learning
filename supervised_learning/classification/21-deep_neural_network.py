@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 '''
-Neuron class that defines a neural network
-with one hidden layer performing binary classification
+Neuron class that defines a neural network with one hidden layer performing binary classification
 '''
 
 
@@ -35,11 +34,11 @@ class DeepNeuralNetwork:
             weights["b{}".format(index)] = np.zeros((layer, 1))
             weights["W{}".format(index)] = (
                 np.random.randn(layer, previous) * np.sqrt(2 / previous))
-            previous = layer
+            previous = layer 
 
-        self.L = len(layers)
-        self.cache = {}
-        self.weights = weights
+        self.__L = len(layers)
+        self.__cache = {}
+        self.__weights = weights
 
     @property
     def L(self):
