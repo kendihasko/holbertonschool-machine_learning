@@ -76,7 +76,6 @@ class NeuralNetwork:
         '''
         return self.__A2
 
-
     def forward_prop(self, X):
         '''
         Calculates the forward propagation of the neuron,
@@ -98,4 +97,3 @@ class NeuralNetwork:
         m_loss = np.sum((Y * np.log(A)) + (1 - Y) * np.log(1.0000001 - A))
         cost = (1/m) * (-(m_loss))
         return cost
-        
