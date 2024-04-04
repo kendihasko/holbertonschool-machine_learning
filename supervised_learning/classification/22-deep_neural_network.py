@@ -95,3 +95,52 @@ class DeepNeuralNetwork:
         cost = self.cost(Y, A)
         prediction = np.where(A >= 0.5, 1, 0)
         return (prediction, cost)
+
+    def gradient_descent(self, Y, cache, alpha=0.05):
+        """
+        calculates one pass of gradient descent on the neural network
+        """
+
+        m = Y.shape[1]
+        back = {}
+
+        for index in range(self.L, 0, -1):
+
+            A = cache["A{}".format(index - 1)]
+            if index == self.L:
+                back["dz{}".format(index)] = (cache["A{}".format(index)] - Y)
+            else:
+                dz_prev = back["dz{}".format(index + 1)]
+                A_current = cache["A{}".format(index)]
+                back["dz{}".format(index)] = (
+                    np.matmul(W_prev.transpose(), dz_prev) *
+                    (A_current * (1 - A_current)))
+
+            dz = back["dz{}".format(index)]
+            dW = (1 / m) * (np.matmul(dz, A.transpose()))
+            db = (1 / m) * np.sum(dz, axis=1, keepdims=True)
+            W_prev = self.weights["W{}".format(index)]
+
+            self.__weights["W{}".format(index)] = (
+                self.weights["W{}".format(index)] - (alpha * dW))
+            self.__weights["b{}".format(index)] = (
+                self.weights["b{}".format(index)] - (alpha * db))
+
+    def train(self, X, Y, iterations=5000, alpha=0.05):
+        """
+        trains the neuron and updates __weights and __cache
+        """
+        if type(iterations) is not int:
+            raise TypeError("iterations must be an integer")
+        if iterations <= 0:
+            raise ValueError("iterations must be a positive integer")
+        if type(alpha) is not float:
+            raise TypeError("alpha must be a float")
+        if alpha <= 0:
+            raise ValueError("alpha must be positive")
+
+        for itr in range(iterations):
+            A, cache = self.forward_prop(X)
+            self.gradient_descent(Y, cache, alpha)
+
+        return self.evaluate(X, Y)
