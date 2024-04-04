@@ -12,7 +12,6 @@ class Neuron:
     A single neuron performing binary classification
     '''
 
-
     def __init__(self, nx):
         '''
         Class constructor
@@ -48,7 +47,7 @@ class Neuron:
 
     def forward_prop(self, X):
         '''
-        Calculates the forward propagation of the neuron, 
+        Calculates the forward propagation of the neuron,
         neuron should use a sigmoid activation function
         '''
         z = np.matmul(self.W, X) + self.b
