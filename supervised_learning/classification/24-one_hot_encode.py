@@ -1,23 +1,17 @@
 #!/usr/bin/env python3
-"""
-    One-Hot Encode
-"""
+'''
+One-Hot Encode
+'''
 
 
 import numpy as np
 
 
 def one_hot_encode(Y, classes):
-    """
-        Method that converts a numerical label vector into a
-        one-hot vector
-
-        :param Y: ndarray, shape(m), numeric class labels
-        :param classes:  maximum number of classes found in Y
-
-        :return: one-hot encoding of Y, shape(classes,m)
-                 or None on failure
-    """
+    '''
+    Converts a numerical label vector into a
+    one-hot vector
+    '''
 
     if not isinstance(Y, np.ndarray) or len(Y.shape) != 1:
         return None
