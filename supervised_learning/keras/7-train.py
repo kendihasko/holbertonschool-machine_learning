@@ -5,6 +5,7 @@
 
 import tensorflow.keras as K
 
+
 def train_model(network, data, labels, batch_size,
                 epochs, validation_data=None, early_stopping=False,
                 patience=0, learning_rate_decay=False, alpha=0.1,
@@ -15,7 +16,7 @@ def train_model(network, data, labels, batch_size,
     callback = []
     if early_stopping is True and validation_data is not None:
         early_stop = K.callbacks.EarlyStopping(monitor='val_loss',
-                                                patience=patience)
+                                               patience=patience)
         callback.append(early_stop)
 
     if learning_rate_decay and validation_data:
