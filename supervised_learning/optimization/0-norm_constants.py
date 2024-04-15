@@ -8,7 +8,7 @@ import numpy as np
 
 def normalization_constants(X):
     '''
-    A function that calculates the normalization 
+    A function that calculates the normalization
     (standardization) constants of a matrix
     '''
     mean = np.mean(X, axis = 0)
