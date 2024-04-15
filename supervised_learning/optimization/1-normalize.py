@@ -10,5 +10,5 @@ def normalize(X, m, s):
     '''
     A function that normalizes (standardizes) a matrix
     '''
-    Z = (X - m) / s
+    Z=(X-m)/s
     return Z
