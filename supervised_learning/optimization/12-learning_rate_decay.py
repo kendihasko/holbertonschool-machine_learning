@@ -11,7 +11,7 @@ def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
     Method that creates learning rate decay operation in tf
     using inverse time decay
     '''
-        
+
     learning_rate = tf.compat.v1.train.inverse_time_decay(
         learning_rate=alpha,
         decay_steps=decay_step,
