@@ -5,6 +5,8 @@ in tensorflow using the gradient descent
 with momentum optimization algorithm
 '''
 
+import tensorflow.compat.v1 as tf
+
 
 def create_momentum_op(loss, alpha, beta1):
     '''

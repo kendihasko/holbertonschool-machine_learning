@@ -3,7 +3,6 @@
 Updates a variable using the gradient descent
 with momentum optimization algorithm
 '''
-import tensorflow.compat.v1 as tf
 
 
 def update_variables_momentum(alpha, beta1, var, grad, v):
