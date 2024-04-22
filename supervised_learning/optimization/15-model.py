@@ -190,8 +190,6 @@ def model(Data_train, Data_valid, layers, activations, alpha=0.001, beta1=0.9,
             if i < epochs:
 
                 sess.run(global_step.assign(i))
-
-
                 sess.run(alpha)
 
                 X_shuffled, Y_shuffled = shuffle_data(X_train, Y_train)
