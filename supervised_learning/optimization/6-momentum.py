@@ -15,7 +15,7 @@ def create_momentum_op(loss, alpha, beta1):
     with momentum optimization algorithm
     '''
     optimizer = tf.train.MomentumOptimizer(learning_rate=alpha,
-        momentum=beta1)
+                                            momentum=beta1)
 
     train_op = optimizer.minimize(loss)
 
