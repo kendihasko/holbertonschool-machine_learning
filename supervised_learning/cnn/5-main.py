@@ -39,4 +39,5 @@ if __name__ == "__main__":
     Y_pred = np.argmax(Y_pred, 1)
     plt.imshow(X_valid[0])
     plt.title(str(Y_valid[0]) + ' : ' + str(Y_pred[0]))
+    plt.savefig('results.png')
     plt.show()
