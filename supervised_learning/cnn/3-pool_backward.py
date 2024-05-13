@@ -1,26 +1,15 @@
 #!/usr/bin/env python3
-"""
+'''
     Pooling Back Propagation
-"""
+'''
 
 import numpy as np
 
 
 def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='max'):
-    """
-        function that performs back propagation over a pooling layer of NN
-
-        :param dA: ndarray, shape(m,h_new,w_new,c_new) partial derivatives
-        with respect to the output of the pooling layer
-        :param A_prev: ndarray, shape(m,h_prev,w_prev,c) output of previous
-        layer
-        :param kernel_shape: tuple(kh,kw) size kernel for pooling
-        :param stride: tuple(sh,sw) stride for the pooling
-        :param mode: string 'max' or 'avg' indicating mode of pooling
-
-        :return: partial derivatives with respect to the previous layer
-        (dA_prev)
-    """
+    '''
+        A function that performs back propagation over a pooling layer of NN
+    '''
     # extract variable
     m, h_new, w_new, c = dA.shape
     _, h_prev, w_prev, _ = A_prev.shape

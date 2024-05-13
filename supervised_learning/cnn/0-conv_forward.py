@@ -1,24 +1,15 @@
 #!/usr/bin/env python3
-"""
+'''
     Convolutional Forward Propagation
-"""
+'''
 
 import numpy as np
 
 
 def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
-    """
-        function that performs forward propagation over a conv layer of NN
-
-        :param A_prev: ndarray, shape(m,h_prev,w_prev,c_prev) output layer
-        :param W: ndarray, shape(kh,kw,c_prev,c_new) kernel
-        :param b: ndarray, shape(1,1,1,c_new) biases
-        :param activation: activation function
-        :param padding: string 'same' or 'valid'
-        :param stride: tuple (sh,sw)
-
-        :return: output of the convolutional layer
-    """
+    '''
+        A function that performs forward propagation over a conv layer of NN
+    '''
     # size output layer, kernel, stride
     m, h_prev, w_prev, c_prev = A_prev.shape
     kh, kw, _, c_new = W.shape

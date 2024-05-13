@@ -1,35 +1,16 @@
 #!/usr/bin/env python3
-"""
+'''
     LeNet-5 (Tensorflow 1 implementation)
-"""
+'''
 
 import tensorflow.compat.v1 as tf
 
 
 def lenet5(x, y):
-    """
-        function that builds a modified version of the LeNet-5
+    '''
+        A function that builds a modified version of the LeNet-5
         architecture using TensorFlow version 1
-
-        :param x: tf.placeholder, shape(m,28,28,1) input images
-        :param y: tf.placeholder, shape(m,10) one-hot labels
-
-        Model:
-            * Convolutional layer with 6 kernels of shape 5x5 with same padding
-            * Max pooling layer with kernels of shape 2x2 with 2x2 strides
-            * Convolutional layer with 16 kernels, shape 5x5 with valid padding
-            * Max pooling layer with kernels of shape 2x2 with 2x2 strides
-            * Fully connected layer with 120 nodes
-            * Fully connected layer with 84 nodes
-            * Fully connected softmax output layer with 10 nodes
-        he_normal initialization
-        activation : relu
-
-        :return: * tensor for softmax activated output
-                 * training operation that utilizes Adam opt.
-                 * tensor for loss of network
-                 * tensor for accuracy of the network
-    """
+    '''
 
     # set initialization to He et. al
     initializer = tf.keras.initializers.VarianceScaling(scale=2.0)

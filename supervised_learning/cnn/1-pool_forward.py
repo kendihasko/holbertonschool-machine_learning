@@ -1,23 +1,16 @@
 #!/usr/bin/env python3
-"""
+'''
     Pooling Forward Propagation
-"""
+'''
 
 import numpy as np
 
 
 def pool_forward(A_prev, kernel_shape, stride=(1, 1), mode='max'):
-    """
-        function that performs forward propagation over a pooling layer
+    '''
+        A function that performs forward propagation over a pooling layer
         of a NN
-
-        :param A_prev: ndarray, shape(m,h_prev,w_prev,c_prev) output prev layer
-        :param kernel_shape: tuple(kh,kw), size kernel for pooling
-        :param stride: tuple(sh, sw) stride for pooling
-        :param mode: string 'max' or 'avg' type of pooling
-
-        :return: output pooling layer
-    """
+    '''
     # size
     m, h_prev, w_prev, c_prev = A_prev.shape
     kh, kw = kernel_shape

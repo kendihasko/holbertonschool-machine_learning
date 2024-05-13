@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""
+'''
     Convolution Back Propagation
-"""
+'''
 
 import numpy as np
 
 
 def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
-    """
+    '''
         Avfunction that performs back propagation over a convolutional
         layer of NN
-    """
+    '''
 
     # extract variable
     _, h_new, w_new, c_new = dZ.shape
