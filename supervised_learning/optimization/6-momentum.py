@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
-'''
-Creates the training operation for a neural network
-in tensorflow using the gradient descent
-with momentum optimization algorithm
-'''
-
-import tensorflow.compat.v1 as tf
+"""
+   Momentum
+"""
 
 
-def create_momentum_op(loss, alpha, beta1):
-    '''
-    A function that creates the training operation for a neural network
-    in tensorflow using the gradient descent
-    with momentum optimization algorithm
-    '''
-    optimizer = tf.train.MomentumOptimizer(learning_rate=alpha, momentum=beta1)
+import tensorflow as tf
 
-    train_op = optimizer.minimize(loss)
 
-    return train_op
+def create_momentum_op(alpha, beta1):
+    """
+    Sets up the gradient descent with momentum
+
+    Args:
+        alpha (float): The learning rate.
+        beta1 (float): The momentum weight.
+
+    Returns:
+        optimizer: Optimizer object for gradient descent with momentum.
+    """
+    optimizer = tf.keras.optimizers.SGD(
+        learning_rate=alpha,
+        momentum=beta1)
+    return optimizer
