@@ -105,7 +105,7 @@ class DeepNeuralNetwork:
         self.__cache['A0'] = X
         L = self.__L
 
-        for L in range(1, L):
+        for l in range(1, L):
             Z = (np.matmul(self.__weights["W" + str(l)],
                            self.__cache['A' + str(l - 1)]) +
                  self.__weights['b' + str(l)])
