@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-    Class DeepNeuralNetwork: deep NN performing binary classification
+    Class DeepNeuralNetwork : deep NN performing binary classification
 """
 
 import numpy as np
@@ -113,7 +113,7 @@ class DeepNeuralNetwork:
                 A = 1 / (1 + np.exp(-Z))
             else:
                 A = np.tanh(Z)
-            self.__cache['A' + str(layer)] = A
+            self.__cache['A' + str(l)] = A
 
         Z = (np.matmul(self.__weights["W" + str(L)],
                        self.__cache['A' + str(L - 1)]) +
@@ -185,16 +185,16 @@ class DeepNeuralNetwork:
 
         for layer in range(L - 1, 0, -1):
             dA = np.matmul(W_prev.T, dZ)
-            A = cache['A' + str(layer)]
+            A = cache['A' + str(l)]
             if self.__activation == 'sig':
                 dZ = dA * A * (1 - A)
             else:
                 dZ = dA * (1 - (A ** 2))
             dW = np.matmul(dZ, cache['A' + str(layer - 1)].T) / m
             db = np.sum(dZ, axis=1, keepdims=True) / m
-            W_prev = np.copy(self.__weights['W' + str(layer)])
-            self.__weights['W' + str(layer)] -= alpha * dW
-            self.__weights['b' + str(layer)] -= alpha * db
+            W_prev = np.copy(self.__weights['W' + str(l)])
+            self.__weights['W' + str(l)] -= alpha * dW
+            self.__weights['b' + str(l)] -= alpha * db
 
     def train(self, X, Y, iterations=5000, alpha=0.05,
               verbose=True, graph=True, step=100):
@@ -264,3 +264,42 @@ class DeepNeuralNetwork:
             plt.ylabel('cost')
             plt.title('Training Cost')
             plt.show()
+
+        return self.evaluate(X, Y)
+
+    def save(self, filename):
+        """
+            Method to saves instance object to a file in pickle format
+
+            :param filename: file which the object should be saved
+
+        """
+        # test extention
+        if not filename.endswith('.pkl'):
+            filename += '.pkl'
+
+        # open file in binary write mode
+        with open(filename, 'wb') as file:
+            # use pickel to dump the object into the file
+            pickle.dump(self, file)
+
+    @staticmethod
+    def load(filename):
+        """
+            method to load a pickled DeepNeuralNetwork object
+
+            :param filename: file from which object should be loaded
+
+            :return: loaded object
+                    or None if filename doesn't exist
+        """
+
+        try:
+            # open file in binary mode
+            with open(filename, 'rb') as file:
+                # use pickle to load
+                loaded_object = pickle.load(file)
+            return loaded_object
+
+        except FileNotFoundError:
+            return None
