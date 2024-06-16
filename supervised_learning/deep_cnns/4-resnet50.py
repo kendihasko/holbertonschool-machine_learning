@@ -12,20 +12,10 @@ projection_block = __import__('3-projection_block').projection_block
 def resnet50():
     """
     Builds a ResNet-50 network using Keras model
-
-    input data will have shape (224, 224, 3)
-
-    All convolutions inside and outside blocks should be followed by
-    batch normalization along the channels axis and
-    rectified ReLU activation, respectively
-
-    All weights should be initialized with he normal
-
-    returns:
-        the keras model
     """
 
-    init = K.initializers.he_normal()
+    seed = 0
+    init = K.initializers.HeNormal(seed=seed)
     activation = K.activations.relu
     img_input = K.Input(shape=(224, 224, 3))
 
