@@ -11,7 +11,7 @@ def identity_block(A_prev, filters):
     """
     
     F11, F3, F12 = filters
-    init = K.initializers.he_normal()
+    init = K.initializers.HeNormal()
     activation = K.activations.relu
 
     C11 = K.layers.Conv2D(filters=F11,
