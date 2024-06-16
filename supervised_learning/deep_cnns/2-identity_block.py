@@ -8,14 +8,6 @@ from tensorflow import keras as K
 def identity_block(A_prev, filters):
     """
     Builds an identity block using Keras
-
-    Args:
-        A_prev: The output from the previous layer (tensor).
-        filters: Tuple or list of 3 integers, defining the number of filters
-                 in the convolutional layers of the main path.
-        
-    Returns:
-        Output of the identity block (tensor).
     """
     
     F11, F3, F12 = filters
