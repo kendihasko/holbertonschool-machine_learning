@@ -6,27 +6,10 @@ Defines a function that builds an identity block using Keras
 
 from tensorflow import keras as K
 
+
 def identity_block(A_prev, filters):
     """
     Builds an identity block using Keras
-
-    parameters:
-        A_prev: output from the previous layer
-        filters [tuple or list]:
-            containing F11, F3, F12, respectively
-
-    F11: number of filters in the first 1x1 convolution
-    F3: number of filters in the 3x3 convolution
-    F12: number of filters in the second 1x1 convolution
-
-    All convolutions inside the identity block should
-    be followed by batch normalization along the channels axis
-    and then ReLU activation, respectively
-
-    All weights should be initialized using he normal
-
-    returns:
-        the activated output of the identity block
     """
 
     F11, F3, F12 = filters
