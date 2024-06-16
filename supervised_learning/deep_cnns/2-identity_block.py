@@ -42,26 +42,3 @@ def identity_block(A_prev, filters):
     output = K.layers.Activation(activation)(Addition)
 
     return output
-
-# Example usage for testing the block
-if __name__ == "__main__":
-    import numpy as np
-    from tensorflow.keras import Input, Model
-
-    # Create a random input tensor with shape (batch_size, height, width, channels)
-    A_prev = np.random.randn(5, 64, 64, 256).astype(np.float32)
-    
-    # Define filters for the identity block
-    filters = (64, 64, 256)
-    
-    # Create an input layer from the random tensor
-    input_layer = Input(shape=(64, 64, 256))
-    
-    # Build the identity block
-    output_layer = identity_block(input_layer, filters)
-    
-    # Create a model
-    model = Model(inputs=input_layer, outputs=output_layer)
-    
-    # Print the model summary
-    model.summary()
