@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import tensorflow.keras as K
+from tensorflow import keras as K
 identity_block = __import__('2-identity_block').identity_block
 
 if __name__ == '__main__':
