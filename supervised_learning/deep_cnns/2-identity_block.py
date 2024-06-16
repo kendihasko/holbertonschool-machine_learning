@@ -5,11 +5,12 @@ Defines a function that builds an identity block using Keras
 
 from tensorflow import keras as K
 
+
 def identity_block(A_prev, filters):
     """
     Builds an identity block using Keras
     """
-    
+
     F11, F3, F12 = filters
     seed = 0
     init = K.initializers.HeNormal(seed=seed)
