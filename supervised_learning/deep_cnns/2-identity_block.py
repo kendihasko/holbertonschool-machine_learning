@@ -11,6 +11,7 @@ def identity_block(A_prev, filters):
     """
     
     F11, F3, F12 = filters
+    seed = 0
     init = K.initializers.HeNormal()
     activation = K.activations.relu
 
