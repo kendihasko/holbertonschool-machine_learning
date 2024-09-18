@@ -1,26 +1,40 @@
 #!/usr/bin/env python3
 
 import numpy as np
-from keras.preprocessing.text import Tokenizer
 
 def bag_of_words(sentences, vocab=None):
-    # Initialize the Tokenizer
-    tokenizer = Tokenizer()
-
-    # Fit the tokenizer on the sentences
-    tokenizer.fit_on_texts(sentences)
-
-    # Convert sentences to sequences
-    sequences = tokenizer.texts_to_sequences(sentences)
-
-    # Create the bag of words embedding matrix
-    embeddings = np.zeros((len(sentences), len(tokenizer.word_index) + 1), dtype=int)
-
-    for i, seq in enumerate(sequences):
-        for word_index in seq:
-            embeddings[i, word_index] += 1  # Count the occurrences of each word
-
-    # Features are the words in the tokenizer's index
-    features = sorted(tokenizer.word_index.keys())
-
-    return embeddings, features
+    """
+    sentences: list of sentences to analyze
+    vocab: list of vocabulary words to use for the analysis.
+           If None, all words within sentences should be used.
+           
+    Returns:
+    embeddings: numpy.ndarray of shape (s, f) containing the embeddings
+                s is the number of sentences in sentences
+                f is the number of features analyzed
+    features: list of the features used for embeddings
+    
+    Note: The use of the gensim library is prohibited.
+    """
+    
+    # Tokenize sentences into words
+    tokenized_sentences = [sentence.lower().split() for sentence in sentences]
+    
+    # If no vocabulary is provided, generate one from the sentences
+    if vocab is None:
+        vocab = sorted(set(word for sentence in tokenized_sentences for word in sentence))
+    
+    # Create an empty matrix for the bag-of-words representation
+    embeddings = np.zeros((len(sentences), len(vocab)), dtype=int)
+    
+    # Create a mapping of vocabulary words to indices
+    word_to_idx = {word: i for i, word in enumerate(vocab)}
+    
+    # Fill the matrix with word counts
+    for i, sentence in enumerate(tokenized_sentences):
+        for word in sentence:
+            if word in word_to_idx:
+                embeddings[i, word_to_idx[word]] += 1
+    
+    # Return the embeddings and the features (vocabulary)
+    return embeddings, vocab
