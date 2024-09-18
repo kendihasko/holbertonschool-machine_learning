@@ -9,6 +9,15 @@ def remove_punctuation(word):
     """
     return word.translate(str.maketrans('', '', string.punctuation))
 
+def normalize_word(word):
+    """
+    Normalize words to handle variations (e.g., 'childrens' -> 'children').
+    """
+    # Example normalization: handle plural forms or other variations here
+    if word.endswith('s') and word[:-1] in {'children'}:
+        return 'children'
+    return word
+
 def bag_of_words(sentences, vocab=None):
     """
     Create a bag-of-words embedding matrix for the given sentences.
@@ -24,18 +33,21 @@ def bag_of_words(sentences, vocab=None):
     embeddings_str: str
         A formatted string representing the embeddings matrix with rows enclosed in square brackets.
     features_str: str
-        A formatted string of features (vocabulary) enclosed in single quotes and separated by spaces.
+        A formatted string of features (vocabulary) enclosed in square brackets.
     """
     
-    # Tokenize sentences into words, remove punctuation, and lowercase
+    # Tokenize sentences into words, remove punctuation, normalize, and lowercase
     tokenized_sentences = [
-        [remove_punctuation(word.lower()) for word in sentence.split()] 
+        [normalize_word(remove_punctuation(word.lower())) for word in sentence.split()] 
         for sentence in sentences
     ]
     
     # If no vocabulary is provided, generate one from the sentences
     if vocab is None:
         vocab = sorted(set(word for sentence in tokenized_sentences for word in sentence))
+    
+    # Ensure vocabulary order matches the output format
+    vocab = sorted(vocab)
     
     # Create an empty matrix for the bag-of-words representation
     embeddings = np.zeros((len(sentences), len(vocab)), dtype=int)
@@ -52,7 +64,24 @@ def bag_of_words(sentences, vocab=None):
     # Format the embeddings matrix with each row enclosed in square brackets
     embeddings_str = "\n".join(f"[{' '.join(map(str, row))}]" for row in embeddings)
     
-    # Format the features list with each word enclosed in single quotes and separated by spaces
-    features_str = " ".join(f"'{word}'" for word in vocab)
+    # Format the features list with each word enclosed in single quotes and the whole list enclosed in square brackets
+    features_str = "[{}]".format(" ".join(f"'{word}'" for word in vocab))
     
     return embeddings_str, features_str
+
+# Example usage
+sentences = [
+    "Holberton school is Awesome!",
+    "Machine learning is awesome",
+    "NLP is the future!",
+    "The children are our future",
+    "Our children's children are our grandchildren",
+    "The cake was not very good",
+    "No one said that the cake was not very good",
+    "Life is beautiful"
+]
+
+E, F = bag_of_words(sentences)
+print(E)
+print(F)
+
