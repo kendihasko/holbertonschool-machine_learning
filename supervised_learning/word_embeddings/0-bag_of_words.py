@@ -1,30 +1,26 @@
 #!/usr/bin/env python3
 
 import numpy as np
+from keras.preprocessing.text import Tokenizer
 
 def bag_of_words(sentences, vocab=None):
-    # Preprocess the sentences
-    tokenized_sentences = [sentence.lower().split() for sentence in sentences]
-    
-    # Create the vocabulary if none is provided
-    if vocab is None:
-        vocab = set(word for sentence in tokenized_sentences for word in sentence)
-    
-    # Convert vocabulary to a sorted list
-    features = sorted(vocab)
-    
-    # Initialize the embedding matrix
-    embeddings = np.zeros((len(sentences), len(features)), dtype=int)
+    # Initialize the Tokenizer
+    tokenizer = Tokenizer()
 
-    # Create a mapping of words to their index in the features list
-    word_to_index = {word: index for index, word in enumerate(features)}
-    
-    # Populate the embedding matrix
-    for i, sentence in enumerate(tokenized_sentences):
-        for word in sentence:
-            # Remove punctuation from the word
-            word = word.strip("!.,'\"")
-            if word in word_to_index:
-                embeddings[i, word_to_index[word]] += 1  # Increment count for the word
+    # Fit the tokenizer on the sentences
+    tokenizer.fit_on_texts(sentences)
+
+    # Convert sentences to sequences
+    sequences = tokenizer.texts_to_sequences(sentences)
+
+    # Create the bag of words embedding matrix
+    embeddings = np.zeros((len(sentences), len(tokenizer.word_index) + 1), dtype=int)
+
+    for i, seq in enumerate(sequences):
+        for word_index in seq:
+            embeddings[i, word_index] += 1  # Count the occurrences of each word
+
+    # Features are the words in the tokenizer's index
+    features = sorted(tokenizer.word_index.keys())
 
     return embeddings, features
