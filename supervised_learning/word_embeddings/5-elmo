@@ -1,0 +1,4 @@
+A
+The internal weights of the BiLSTM
+The character embedding layer
+The weights applied to the hidden states
