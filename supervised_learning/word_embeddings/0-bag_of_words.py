@@ -1,4 +1,7 @@
+#!/usr/bin/env python3
+
 import numpy as np
+
 
 def bag_of_words(sentences, vocab=None):
     # Preprocess the sentences
