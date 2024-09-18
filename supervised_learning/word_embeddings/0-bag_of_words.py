@@ -38,4 +38,8 @@ def bag_of_words(sentences, vocab=None):
             if word in word_to_index:
                 embeddings[i, word_to_index[word]] = count
     
-    return embeddings, features
+    # Format the features list
+    formatted_features = ' '.join(f"'{item}'" for item in features)
+    formatted_features = f"[{formatted_features}]"
+    
+    return embeddings, formatted_features
