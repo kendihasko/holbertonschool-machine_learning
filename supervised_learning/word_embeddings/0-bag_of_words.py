@@ -62,7 +62,7 @@ def bag_of_words(sentences, vocab=None):
                 embeddings[i, word_to_idx[word]] += 1
     
     # Format the embeddings matrix with each row enclosed in square brackets
-    embeddings_str = "\n".join(f"[{' '.join(map(str, row))}]" for row in embeddings)
+    embeddings_str = "[\n" + "\n".join(f"[{' '.join(map(str, row))}]" for row in embeddings) + "\n]"
     
     # Format the features list with each word enclosed in single quotes and the whole list enclosed in square brackets
     features_str = "[{}]".format(" ".join(f"'{word}'" for word in vocab))
