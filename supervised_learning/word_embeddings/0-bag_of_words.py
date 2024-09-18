@@ -2,14 +2,12 @@
 
 import numpy as np
 
-
 def bag_of_words(sentences, vocab=None):
     # Preprocess the sentences
     tokenized_sentences = [sentence.lower().split() for sentence in sentences]
     
     # Create the vocabulary if none is provided
     if vocab is None:
-        # Flatten the list of words and get unique words
         vocab = set(word for sentence in tokenized_sentences for word in sentence)
     
     # Convert vocabulary to a sorted list
@@ -24,14 +22,9 @@ def bag_of_words(sentences, vocab=None):
     # Populate the embedding matrix
     for i, sentence in enumerate(tokenized_sentences):
         for word in sentence:
+            # Remove punctuation from the word
+            word = word.strip("!.,'\"")
             if word in word_to_index:
                 embeddings[i, word_to_index[word]] += 1  # Increment count for the word
 
     return embeddings, features
-
-# Example usage:
-sentences = ["This is a sentence", "This is another sentence", "And this is a third one"]
-embeddings, features = bag_of_words(sentences)
-
-print("Embeddings:\n", embeddings)
-print("Features:\n", features)
