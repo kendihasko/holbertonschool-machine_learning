@@ -17,7 +17,7 @@ def bag_of_words(sentences, vocab=None):
     Note: The use of the gensim library is prohibited.
     """
     
-    # Tokenize sentences into words
+    # Tokenize sentences into words and lowercasing
     tokenized_sentences = [sentence.lower().split() for sentence in sentences]
     
     # If no vocabulary is provided, generate one from the sentences
@@ -38,3 +38,18 @@ def bag_of_words(sentences, vocab=None):
     
     # Return the embeddings and the features (vocabulary)
     return embeddings, vocab
+
+# Example usage:
+sentences = [
+    "Are you awesome or not?", 
+    "Awesome! I think you are awesome.",
+    "The cake is beautiful, and the children are happy.",
+    "The future is good and full of possibilities.",
+    "Our grandchildren will be learning at Holberton School.",
+    "Machine learning is the future, and NLP is a part of it."
+]
+
+embeddings, vocab = bag_of_words(sentences)
+print("Embeddings:\n", embeddings)
+print("Vocabulary:\n", vocab)
+
