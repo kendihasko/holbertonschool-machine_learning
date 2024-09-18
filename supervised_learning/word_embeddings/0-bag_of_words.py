@@ -22,9 +22,9 @@ def bag_of_words(sentences, vocab=None):
 
     Returns:
     embeddings_str: str
-        A formatted string representing the embeddings matrix with rows separated by newlines.
+        A formatted string representing the embeddings matrix with rows enclosed in square brackets.
     features_str: str
-        A formatted string of features (vocabulary) separated by spaces, enclosed in brackets.
+        A formatted string of features (vocabulary) enclosed in single quotes and separated by spaces.
     """
     
     # Tokenize sentences into words, remove punctuation, and lowercase
@@ -49,10 +49,10 @@ def bag_of_words(sentences, vocab=None):
             if word in word_to_idx:
                 embeddings[i, word_to_idx[word]] += 1
     
-    # Format the embeddings matrix with square brackets
+    # Format the embeddings matrix with each row enclosed in square brackets
     embeddings_str = "\n".join(f"[{' '.join(map(str, row))}]" for row in embeddings)
     
-    # Format the features list with square brackets
-    features_str = f"[{' '.join(vocab)}]"
+    # Format the features list with each word enclosed in single quotes and separated by spaces
+    features_str = " ".join(f"'{word}'" for word in vocab)
     
     return embeddings_str, features_str
