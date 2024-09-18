@@ -68,20 +68,3 @@ def bag_of_words(sentences, vocab=None):
     features_str = "[{}]".format(" ".join(f"'{word}'" for word in vocab))
     
     return embeddings_str, features_str
-
-# Example usage
-sentences = [
-    "Holberton school is Awesome!",
-    "Machine learning is awesome",
-    "NLP is the future!",
-    "The children are our future",
-    "Our children's children are our grandchildren",
-    "The cake was not very good",
-    "No one said that the cake was not very good",
-    "Life is beautiful"
-]
-
-E, F = bag_of_words(sentences)
-print(E)
-print(F)
-
