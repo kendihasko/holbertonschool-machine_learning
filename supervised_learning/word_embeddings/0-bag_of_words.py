@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 
 import numpy as np
+import string
+
+def remove_punctuation(word):
+    """
+    Remove punctuation from a word and return the cleaned word.
+    """
+    return word.translate(str.maketrans('', '', string.punctuation))
 
 def bag_of_words(sentences, vocab=None):
     """
@@ -17,8 +24,11 @@ def bag_of_words(sentences, vocab=None):
     Note: The use of the gensim library is prohibited.
     """
     
-    # Tokenize sentences into words and lowercasing
-    tokenized_sentences = [sentence.lower().split() for sentence in sentences]
+    # Tokenize sentences into words, remove punctuation, and lowercasing
+    tokenized_sentences = [
+        [remove_punctuation(word.lower()) for word in sentence.split()] 
+        for sentence in sentences
+    ]
     
     # If no vocabulary is provided, generate one from the sentences
     if vocab is None:
