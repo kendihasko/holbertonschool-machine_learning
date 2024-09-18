@@ -9,12 +9,17 @@ import string
 from sklearn.feature_extraction.text import CountVectorizer
 
 def preprocess_text(text):
-    """Convert text to lowercase and replace punctuation with spaces."""
+    '''
+    Convert text to lowercase and replace punctuation with spaces.
+    '''
     text = text.lower()
     text = re.sub(r'[{}]+'.format(re.escape(string.punctuation)), ' ', text)
     return text
 
 def bag_of_words(sentences, vocab=None):
+    '''
+    Creates a Bag of Words embedding matrix
+    '''
     # Create a CountVectorizer instance with custom preprocessing
     vectorizer = CountVectorizer(preprocessor=preprocess_text, vocabulary=vocab)
     
