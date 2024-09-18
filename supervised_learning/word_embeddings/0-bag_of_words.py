@@ -11,20 +11,23 @@ def remove_punctuation(word):
 
 def bag_of_words(sentences, vocab=None):
     """
-    sentences: list of sentences to analyze
-    vocab: list of vocabulary words to use for the analysis.
-           If None, all words within sentences should be used.
-           
+    Create a bag-of-words embedding matrix for the given sentences.
+
+    sentences: list of str
+        A list of sentences to analyze.
+
+    vocab: list of str or None
+        A list of vocabulary words to use for the analysis.
+        If None, all words within sentences should be used.
+
     Returns:
-    embeddings: numpy.ndarray of shape (s, f) containing the embeddings
-                s is the number of sentences in sentences
-                f is the number of features analyzed
-    features: list of the features used for embeddings
-    
-    Note: The use of the gensim library is prohibited.
+    embeddings_str: str
+        A formatted string representing the embeddings matrix with rows separated by newlines.
+    features_str: str
+        A formatted string of features (vocabulary) separated by spaces, enclosed in brackets.
     """
     
-    # Tokenize sentences into words, remove punctuation, and lowercasing
+    # Tokenize sentences into words, remove punctuation, and lowercase
     tokenized_sentences = [
         [remove_punctuation(word.lower()) for word in sentence.split()] 
         for sentence in sentences
@@ -46,5 +49,10 @@ def bag_of_words(sentences, vocab=None):
             if word in word_to_idx:
                 embeddings[i, word_to_idx[word]] += 1
     
-    # Return the embeddings and the features (vocabulary)
-    return embeddings, vocab
+    # Format the embeddings matrix with square brackets
+    embeddings_str = "\n".join(f"[{' '.join(map(str, row))}]" for row in embeddings)
+    
+    # Format the features list with square brackets
+    features_str = f"[{' '.join(vocab)}]"
+    
+    return embeddings_str, features_str
