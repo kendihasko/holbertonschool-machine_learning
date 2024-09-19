@@ -7,6 +7,13 @@ import numpy as np
 import re
 import string
 from sklearn.feature_extraction.text import CountVectorizer
+import textwrap
+
+def format_output(text, width=79):
+    '''
+    Formats Words embedding matrix
+    '''
+    return '\n'.join(textwrap.wrap(text, width=width))
 
 
 def preprocess_text(text):
@@ -37,4 +44,4 @@ def bag_of_words(sentences, vocab=None):
     formatted_features = ' '.join(f"'{item}'" for item in features)
     formatted_features = f"[{formatted_features}]"
 
-    return embeddings, formatted_features
+    return embeddings, format_output(formatted_features)
