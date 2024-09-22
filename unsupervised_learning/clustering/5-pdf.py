@@ -20,7 +20,6 @@ def pdf(X, m, S):
     if S.shape[0] != S.shape[1]:
         return None
 
-    # formula
     # p(x∣ μ,Σ) = (1 √(2π)d|Σ|)exp(−1/2(x−μ)T Σ−1(x−μ))
     n, d = X.shape
     mean = m
