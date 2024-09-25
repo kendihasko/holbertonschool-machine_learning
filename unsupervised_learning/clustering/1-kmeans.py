@@ -3,46 +3,44 @@
 
 import numpy as np
 
+
 def kmeans(X, k, iterations=1000):
     """
     K-means on a data set
     """
 
-    # if not isinstance(X, np.ndarray) or len(X.shape) != 2:
-    #     return None, None
-    # if not isinstance(k, int) or k <= 0:
-    #     return None, None
-    # if not isinstance(iterations, int) or iterations <= 0:
-    #     return None, None
+    if not isinstance(X, np.ndarray) or len(X.shape) != 2:
+        return None, None
+    if not isinstance(k, int) or k <= 0:
+        return None, None
+    if not isinstance(iterations, int) or iterations <= 0:
+        return None, None
 
-    # Setting min and max values per column
     n, d = X.shape
     X_min = X.min(axis=0)
     X_max = X.max(axis=0)
 
-    # Centroid initialization
     C = np.random.uniform(X_min, X_max, size=(k, d))
 
     for i in range(iterations):
-        # Calculate distances and assign clusters in one go
-        distances = np.linalg.norm(X[:, np.newaxis] - C, axis=2)
-        clss = np.argmin(distances, axis=1)
 
-        # Update centroids
-        new_C = np.array([X[clss == c].mean(axis=0) if X[clss == c].size > 0 else np.random.uniform(X_min, X_max, d) for c in range(k)])
+        centroids = np.copy(C)
+        centroids_extended = C[:, np.newaxis]
 
-        # Check for convergence
-        if np.all(C == new_C):
+        distances = np.sqrt(((X - centroids_extended) ** 2).sum(axis=2))
+        clss = np.argmin(distances, axis=0)
+
+        for c in range(k):
+            if X[clss == c].size == 0:  # cluster is empty
+                C[c] = np.random.uniform(X_min, X_max, size=(1, d))
+            else:
+                C[c] = X[clss == c].mean(axis=0)
+
+        centroids_extended = C[:, np.newaxis]
+        distances = np.sqrt(((X - centroids_extended) ** 2).sum(axis=2))
+        clss = np.argmin(distances, axis=0)
+
+        if (centroids == C).all():
             break
 
-        C = new_C
-
     return C, clss
-
-def variance(X, C):
-    n, d = X.shape
-    distances = np.linalg.norm(X[:, np.newaxis] - C, axis=2)
-    min_distances = np.min(distances, axis=1)
-    variances = np.sum(min_distances ** 2)
-
-    return variances
