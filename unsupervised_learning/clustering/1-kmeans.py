@@ -3,7 +3,6 @@
 
 import numpy as np
 
-
 def kmeans(X, k, iterations=1000):
     """
     K-means on a data set
@@ -16,60 +15,34 @@ def kmeans(X, k, iterations=1000):
     if not isinstance(iterations, int) or iterations <= 0:
         return None, None
 
-    # Setting min and max values per col
+    # Setting min and max values per column
     n, d = X.shape
     X_min = X.min(axis=0)
     X_max = X.max(axis=0)
 
-    # Centroid
+    # Centroid initialization
     C = np.random.uniform(X_min, X_max, size=(k, d))
 
-    # Loop for the maximum number of iterations
     for i in range(iterations):
+        # Calculate distances and assign clusters in one go
+        distances = np.linalg.norm(X[:, np.newaxis] - C, axis=2)
+        clss = np.argmin(distances, axis=1)
 
-        # initializes k centroids by selecting them from the data points
-        centroids = np.copy(C)
-        centroids_extended = C[:, np.newaxis]
+        # Update centroids
+        new_C = np.array([X[clss == c].mean(axis=0) if X[clss == c].size > 0 else np.random.uniform(X_min, X_max, d) for c in range(k)])
 
-        # euclidean distance (dimensions of the squared distances)
-        distances = np.sqrt((((X - centroids_extended) ** 2).sum(axis=2)))
-        # an array containing the index to the nearest centroid for each point
-        clss = np.argmin(distances, axis=0)
-
-        # Assign all points to the nearest centroid
-        for c in range(k):
-            if X[clss == c].size == 0:  # cluster is empty
-                C[c] = np.random.uniform(X_min, X_max, size=(1, d))
-            else:
-                C[c] = X[clss == c].mean(axis=0)
-
-        # repeat again
-        centroids_extended = C[:, np.newaxis]
-        distances = np.sqrt((((X - centroids_extended) ** 2).sum(axis=2)))
-        clss = np.argmin(distances, axis=0)
-
-        # if there are ano changes
-        if (centroids == C).all():
+        # Check for convergence
+        if np.all(C == new_C):
             break
+
+        C = new_C
 
     return C, clss
 
-
-
-
-
-
-
-
-
-
-
 def variance(X, C):
     n, d = X.shape
-    centroids_extended = C[:, np.newaxis]
-    distances = np.sqrt((((X - centroids_extended) ** 2).sum(axis=2)))
+    distances = np.linalg.norm(X[:, np.newaxis] - C, axis=2)
+    min_distances = np.min(distances, axis=1)
+    variances = np.sum(min_distances ** 2)
 
-    min_distanes = np.min(distances, axis=0)
-    variances = np.sum(min_distanes ** 2)
-
-    return variance
+    return variances
